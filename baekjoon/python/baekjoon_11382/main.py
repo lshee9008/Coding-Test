@@ -1,0 +1,6 @@
+def kid_jungmin():
+    A, B, C = map(int, input().split())
+    print(A + B + C)
+
+if __name__ == '__main__':
+    kid_jungmin()
