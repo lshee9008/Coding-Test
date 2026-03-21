@@ -1,23 +1,37 @@
 import sys
-from collections import Counter
 
-def count_cards():
+
+def stack_sequence():
     n = int(sys.stdin.readline())
 
-    cards = sys.stdin.readline().split()
-
-    m = int(sys.stdin.readline())
-
-    targets = sys.stdin.readline().split()
-
-    card_counts = Counter(cards)
-
+    stack = []
     result = []
+    current_num = 1
+    possible = True
 
-    for target in targets:
-        result.append(str(card_counts[target]))
+    for _ in range(n):
+        target = int(sys.stdin.readline())
 
-    print(' '.join(result))
+        while current_num <= target:
+            stack.append(current_num)
+            result.append('+')
+            current_num += 1
+
+        if stack[-1] == target:
+            stack.pop()
+            result.append('-')
+
+        else:
+            possible = False
+            break
+
+    # 결과 출력
+    if possible:
+        for op in result:
+            print(op)
+    else:
+        print("NO")
+
 
 if __name__ == '__main__':
-    count_cards()
+    stack_sequence()
